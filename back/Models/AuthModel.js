@@ -33,6 +33,16 @@ export const createUserService = async (
   return result.rows[0];
 };
 
+export const getUsersByIdsService = async (ids) => {
+  if (!ids || ids.length === 0) return [];
+  const placeholders = ids.map((_, i) => `$${i + 1}`).join(', ');
+  const result = await pool.query(
+    `SELECT id, name, first_name, avatar FROM users WHERE id IN (${placeholders})`,
+    ids
+  );
+  return result.rows;
+};
+
 export const updateUserProfileService = async (id, fields) => {
   const setClauses = [];
   const values = [];

@@ -72,6 +72,7 @@ export default function ChatArea({ currentChannel, setSendMessage, setTyping, se
         _id: m._id,
         sender: m.sender,
         userId: m.userId,
+        avatar: m.avatar || null,
         text: m.content,
         edited: m.edited || false,
         reactions: m.reactions || [],
@@ -101,6 +102,7 @@ export default function ChatArea({ currentChannel, setSendMessage, setTyping, se
         _id: data._id,
         sender: data.sender,
         userId: data.userId,
+        avatar: data.avatar || null,
         text: data.msg,
         edited: false,
         reactions: [],
@@ -237,7 +239,13 @@ export default function ChatArea({ currentChannel, setSendMessage, setTyping, se
               <div className="system">{m.text}</div>
             ) : (
               <>
-                <div className="message-avatar"></div>
+                <div className="message-avatar">
+                  {m.avatar ? (
+                    <img src={m.avatar} alt="" className="message-avatar-img" />
+                  ) : (
+                    (m.sender || '?').charAt(0).toUpperCase()
+                  )}
+                </div>
                 <div className="message-content">
                   {m.replyTo && m.replyTo.messageId && (
                     <div className="reply-preview">

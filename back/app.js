@@ -16,6 +16,7 @@ import Conversation from './Routes/Conversation.js';
 import { createMessageService, updateMessageService, addReactionService, removeReactionService } from './Models/MessageModel.js';
 import { getConversationByIdService } from './Models/ConversationModel.js';
 import { ensureBansTable } from './Models/BanModel.js';
+import { getUserByIdService } from './Models/AuthModel.js';
 import setupSwagger from './Config/swagger.js';
 
 const app = express();
@@ -92,14 +93,19 @@ pool.connect()
     };
 
     // Socket.IO
-    io.on('connection', (socket) => {
+    io.on('connection', async (socket) => {
       let displayName;
+      let userAvatar = null;
 
       try {
         const token = socket.handshake.auth?.token;
         if (!token) return socket.disconnect();
 
         socket.user = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+
+        // Fetch full user data (for avatar)
+        const fullUser = await getUserByIdService(socket.user.id);
+        userAvatar = fullUser?.avatar || null;
 
         // Multi-socket management
         if (!onlineUsers.has(socket.user.id)) {
@@ -109,11 +115,13 @@ pool.connect()
 
         // Set displayName
         displayName =
-          (socket.user?.first_name && String(socket.user.first_name).trim()) ||
+          (fullUser?.first_name && String(fullUser.first_name).trim()) ||
+          (fullUser?.name && String(fullUser.name).trim()) ||
           (socket.user?.name && String(socket.user.name).trim()) ||
           `user-${socket.id.slice(0, 5)}`;
 
         socket.data.displayName = displayName;
+        socket.data.avatar = userAvatar;
 
         // Emit online users to everyone
         emitOnlineUsers();
@@ -169,6 +177,7 @@ pool.connect()
             msg: savedMessage.content,
             sender: savedMessage.senderName,
             userId: savedMessage.userId,
+            avatar: userAvatar,
             edited: false,
             reactions: [],
             replyTo: savedMessage.replyTo || null,
@@ -292,6 +301,7 @@ pool.connect()
             content: savedMessage.content,
             sender: savedMessage.senderName,
             userId: savedMessage.userId,
+            avatar: userAvatar,
             edited: false,
             reactions: [],
             replyTo: savedMessage.replyTo || null,

@@ -8,6 +8,7 @@ import {
   removeReactionService
 } from '../Models/MessageModel.js';
 import { getUserRoleInServerService } from '../Models/ServerModel.js';
+import { getUsersByIdsService } from '../Models/AuthModel.js';
 import pool from '../Config/DataBase.js';
 
 export const createMessage = async (req, res, next) => {
@@ -33,6 +34,14 @@ export const getMessagesByChannel = async (req, res, next) => {
 
     const messages = await getMessagesByChannelService(channelId);
 
+    // Fetch avatars for all unique userIds
+    const userIds = [...new Set(messages.map(m => m.userId))];
+    const users = await getUsersByIdsService(userIds);
+    const avatarMap = {};
+    for (const u of users) {
+      avatarMap[u.id] = u.avatar || null;
+    }
+
     res.status(200).json({
       message: "Messages récupérés avec succès",
       data: messages.map(m => ({
@@ -42,6 +51,7 @@ export const getMessagesByChannel = async (req, res, next) => {
         content: m.content,
         sender: m.senderName,
         userId: m.userId,
+        avatar: avatarMap[m.userId] || null,
         edited: m.edited || false,
         reactions: m.reactions || [],
         replyTo: m.replyTo || null,
