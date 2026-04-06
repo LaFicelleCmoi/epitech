@@ -20,6 +20,7 @@ export default function ChatArea({ currentChannel, setSendMessage, setTyping, se
   const messagesEndRef = useRef(null);
   const [currentUserId, setCurrentUserId] = useState(null);
   const [currentUserName, setCurrentUserName] = useState(null);
+  const [userRole, setUserRole] = useState(null);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -30,6 +31,33 @@ export default function ChatArea({ currentChannel, setSendMessage, setTyping, se
       setCurrentUserName(payload.name || payload.first_name || null);
     } catch (e) {}
   }, []);
+
+  // Fetch user role in current server
+  useEffect(() => {
+    if (!currentChannel) return;
+    const fetchRole = async () => {
+      const token = localStorage.getItem("token");
+      if (!token) return;
+      try {
+        // Get server_id from channel
+        const chRes = await fetch(`http://localhost:3001/channels/${currentChannel.id}`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        if (!chRes.ok) return;
+        const chData = await chRes.json();
+        const serverId = chData.data?.server_id;
+        if (!serverId) return;
+
+        const roleRes = await fetch(`http://localhost:3001/servers/${serverId}/me`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        if (!roleRes.ok) return;
+        const roleData = await roleRes.json();
+        setUserRole(roleData.data?.role || null);
+      } catch (e) {}
+    };
+    fetchRole();
+  }, [currentChannel]);
 
   const fetchMessages = async (channelId) => {
     try {
@@ -165,6 +193,27 @@ export default function ChatArea({ currentChannel, setSendMessage, setTyping, se
     setShowEmojiFor(null);
   };
 
+  const handleDelete = async (msg) => {
+    const token = localStorage.getItem("token");
+    if (!token) return;
+    try {
+      const res = await fetch(`http://localhost:3001/message/${msg._id}`, {
+        method: "DELETE",
+        headers: { Authorization: "Bearer " + token }
+      });
+      if (!res.ok) throw new Error();
+      setMessages(prev => prev.filter(m => m._id !== msg._id));
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const canDelete = (msg) => {
+    if (msg.userId === currentUserId) return true;
+    if (userRole === 'owner' || userRole === 'admin') return true;
+    return false;
+  };
+
   if (!currentChannel) {
     return (
       <div className="chat-area">
@@ -240,6 +289,11 @@ export default function ChatArea({ currentChannel, setSendMessage, setTyping, se
                         {m.userId === currentUserId && (
                           <button className="msg-action-btn" onClick={() => handleEdit(m)}>
                             {t('chat.editMessage')}
+                          </button>
+                        )}
+                        {canDelete(m) && (
+                          <button className="msg-action-btn msg-delete-btn" onClick={() => handleDelete(m)}>
+                            {t('chat.deleteMessage')}
                           </button>
                         )}
                         <button

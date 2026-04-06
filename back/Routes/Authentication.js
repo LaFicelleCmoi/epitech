@@ -1,5 +1,5 @@
 import express from "express";
-import { login } from "../Controllers/AuthControllers.js";
+import { login, updateProfile } from "../Controllers/AuthControllers.js";
 import { createUser, getUser } from "../Controllers/AuthControllers.js";
 import { authenticate } from "../middleware/authentificationJwt.js";
 
@@ -152,6 +152,8 @@ router.post("/login", login);
  *               type: object
  */
 router.get("/me", authenticate, getUser);
+
+router.put("/me", authenticate, updateProfile);
 
 // /**
 //  * @swagger

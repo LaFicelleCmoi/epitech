@@ -169,6 +169,21 @@ export default function DMChat({ conversation }) {
     setShowEmojiFor(null);
   };
 
+  const handleDeleteDM = async (msg) => {
+    const token = localStorage.getItem("token");
+    if (!token) return;
+    try {
+      const res = await fetch(`http://localhost:3001/message/${msg._id}`, {
+        method: "DELETE",
+        headers: { Authorization: "Bearer " + token }
+      });
+      if (!res.ok) throw new Error();
+      setMessages(prev => prev.filter(m => m._id !== msg._id));
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   if (!conversation) {
     return (
       <div className="dm-chat-empty">
@@ -240,6 +255,11 @@ export default function DMChat({ conversation }) {
                     {m.userId === currentUserId && (
                       <button className="msg-action-btn" onClick={() => handleEdit(m)}>
                         {t('chat.editMessage')}
+                      </button>
+                    )}
+                    {m.userId === currentUserId && (
+                      <button className="msg-action-btn msg-delete-btn" onClick={() => handleDeleteDM(m)}>
+                        {t('chat.deleteMessage')}
                       </button>
                     )}
                     <button

@@ -33,32 +33,23 @@ export const createUserService = async (
   return result.rows[0];
 };
 
-// export const updateUserByIdService = async (
-//   id,
-//   name,
-//   first_name,
-//   phone_number,
-//   mail,
-//   hashedPassword,
-// ) => {
-//   const result = await pool.query(
-//     `UPDATE users
-//      SET name = $2,
-//          first_name = $3,
-//          phone_number = $4,
-//          mail = $5,
-//          password = $6,
-//      WHERE id = $1
-//      RETURNING *`,
-//     [id, name, first_name, phone_number, mail, hashedPassword]
-//   );
-//   return result.rows[0];
-// };
+export const updateUserProfileService = async (id, fields) => {
+  const setClauses = [];
+  const values = [];
+  let idx = 1;
 
-// export const deleteUserByIdService = async (id) => {
-//   const result = await pool.query(
-//     "DELETE FROM users WHERE id = $1 RETURNING *",
-//     [id]
-//   );
-//   return result.rows[0];
-// };
+  if (fields.name !== undefined) { setClauses.push(`name = $${idx++}`); values.push(fields.name); }
+  if (fields.first_name !== undefined) { setClauses.push(`first_name = $${idx++}`); values.push(fields.first_name); }
+  if (fields.phone_number !== undefined) { setClauses.push(`phone_number = $${idx++}`); values.push(fields.phone_number); }
+  if (fields.mail !== undefined) { setClauses.push(`mail = $${idx++}`); values.push(fields.mail); }
+  if (fields.avatar !== undefined) { setClauses.push(`avatar = $${idx++}`); values.push(fields.avatar); }
+
+  if (setClauses.length === 0) return null;
+
+  values.push(id);
+  const result = await pool.query(
+    `UPDATE users SET ${setClauses.join(', ')} WHERE id = $${idx} RETURNING id, name, first_name, phone_number, mail, avatar`,
+    values
+  );
+  return result.rows[0];
+};

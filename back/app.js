@@ -48,6 +48,22 @@ pool.connect()
     await ensureBansTable();
     console.log('Table bans vérifiée');
 
+    // Ensure avatar column exists
+    try {
+      const colCheck = await pool.query(`
+        SELECT column_name FROM information_schema.columns
+        WHERE table_name = 'users' AND column_name = 'avatar'
+      `);
+      if (colCheck.rows.length === 0) {
+        await pool.query(`ALTER TABLE users ADD COLUMN avatar TEXT`);
+        console.log('Colonne avatar ajoutée');
+      } else {
+        console.log('Colonne avatar déjà présente');
+      }
+    } catch (err) {
+      console.log('Avatar column check error:', err.message);
+    }
+
     const httpServer = createServer(app);
     const io = new Server(httpServer, {
       cors: { origin: '*' },

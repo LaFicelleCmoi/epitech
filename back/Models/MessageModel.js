@@ -83,6 +83,10 @@ export const getMessagesByChannelService = async (channelId) => {
   return messages;
 };
 
+export const getMessageByIdService = async (messageId) => {
+  return Message.findById(messageId);
+};
+
 export const deleteMessageService = async (messageId) => {
   const deletedMessage = await Message.findByIdAndDelete(messageId);
 

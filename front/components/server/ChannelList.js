@@ -8,8 +8,9 @@ import DeleteServerModal from "../modal/DeleteServerModal";
 import EditChannelModal from "../modal/EditChannelModal";
 import DeleteChannelModal from "../modal/DeleteChannelModal";
 import LeaveServerModal from "../modal/LeaveServerModal";
+import UserPanel from "../layout/UserPanel";
 
-export default function ChannelList({ serverId, serverName, onChannelSelect, user, onServerLeft, unreadChannels = {}, currentChannel }) {
+export default function ChannelList({ serverId, serverName, onChannelSelect, user, onServerLeft, unreadChannels = {}, currentChannel, onUserUpdate }) {
   const { t } = useI18n();
   const [channels, setChannels] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -224,6 +225,8 @@ export default function ChannelList({ serverId, serverName, onChannelSelect, use
       <LeaveServerModal isOpen={isLeaveServerModalOpen} onClose={() => setIsLeaveServerModalOpen(false)}
         serverId={serverId}
         onServerLeft={(id) => { if (onServerLeft) onServerLeft(serverId); setIsLeaveServerModalOpen(false); }} />
+
+      <UserPanel user={user} onUserUpdate={onUserUpdate} />
     </div>
   );
 }

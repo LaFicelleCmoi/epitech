@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { getUserByMailService, getUserByIdService, createUserService } from "../Models/AuthModel.js";
+import { getUserByMailService, getUserByIdService, createUserService, updateUserProfileService } from "../Models/AuthModel.js";
 
 const handleResponse = (res, status, message, data = null) => {
     res.status(status).json({
@@ -78,6 +78,23 @@ export const getUser = async (req, res, next) => {
     const User = await getUserByIdService(req.user.id);
     if(!User) return handleResponse(res, 404, "User not found")
       handleResponse(res, 200, "User fetched successfully", User)
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const updateProfile = async (req, res, next) => {
+  try {
+    const userId = req.user.id;
+    const { name, first_name, phone_number, mail, avatar } = req.body;
+
+    const updated = await updateUserProfileService(userId, {
+      name, first_name, phone_number, mail, avatar
+    });
+
+    if (!updated) return handleResponse(res, 400, "Nothing to update");
+
+    handleResponse(res, 200, "Profile updated successfully", updated);
   } catch (error) {
     next(error);
   }

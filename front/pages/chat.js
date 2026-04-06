@@ -213,6 +213,8 @@ export default function Home() {
             onConversationSelect={handleDMSelect}
             activeConversation={activeConversation}
             unreadDMs={unreadDMs}
+            user={user}
+            onUserUpdate={setUser}
           />
           <DMChat conversation={activeConversation} />
         </div>
@@ -235,6 +237,7 @@ export default function Home() {
             onServerLeft={handleServerLeft}
             unreadChannels={unreadChannels}
             currentChannel={currentChannel}
+            onUserUpdate={setUser}
           />
 
           <MainContent currentChannel={currentChannel} />

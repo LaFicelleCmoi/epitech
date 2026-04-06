@@ -1,11 +1,14 @@
 import {
   createMessageService,
   getMessagesByChannelService,
+  getMessageByIdService,
   deleteMessageService,
   updateMessageService,
   addReactionService,
   removeReactionService
 } from '../Models/MessageModel.js';
+import { getUserRoleInServerService } from '../Models/ServerModel.js';
+import pool from '../Config/DataBase.js';
 
 export const createMessage = async (req, res, next) => {
   try {
@@ -53,11 +56,38 @@ export const getMessagesByChannel = async (req, res, next) => {
 export const deleteMessage = async (req, res, next) => {
   try {
     const { messageId } = req.params;
-    await deleteMessageService(messageId);
+    const userId = req.user.id;
 
-    res.status(200).json({
-      message: "Message supprimé avec succès"
-    });
+    const message = await getMessageByIdService(messageId);
+    if (!message) {
+      return res.status(404).json({ message: "Message non trouvé" });
+    }
+
+    // If it's your own message, you can always delete it
+    if (message.userId === userId) {
+      await deleteMessageService(messageId);
+      return res.status(200).json({ message: "Message supprimé avec succès" });
+    }
+
+    // Otherwise, check if user is owner/admin of the server (channel messages only)
+    if (message.channelId) {
+      const channelResult = await pool.query(
+        `SELECT server_id FROM channels WHERE id = $1`,
+        [message.channelId]
+      );
+
+      if (channelResult.rows.length > 0) {
+        const serverId = channelResult.rows[0].server_id;
+        const roleData = await getUserRoleInServerService(serverId, userId);
+
+        if (roleData && ['owner', 'admin'].includes(roleData.role)) {
+          await deleteMessageService(messageId);
+          return res.status(200).json({ message: "Message supprimé avec succès" });
+        }
+      }
+    }
+
+    return res.status(403).json({ message: "Vous ne pouvez pas supprimer ce message" });
   } catch (error) {
     next(error);
   }

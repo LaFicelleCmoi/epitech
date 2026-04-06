@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from 'react';
 import { useI18n } from '../../i18n/I18nContext';
+import UserPanel from '../layout/UserPanel';
 
-export default function DMList({ onConversationSelect, activeConversation, unreadDMs = {} }) {
+export default function DMList({ onConversationSelect, activeConversation, unreadDMs = {}, user, onUserUpdate }) {
   const { t } = useI18n();
   const [conversations, setConversations] = useState([]);
   const [showNewDM, setShowNewDM] = useState(false);
@@ -191,6 +192,8 @@ export default function DMList({ onConversationSelect, activeConversation, unrea
           );
         })}
       </div>
+
+      <UserPanel user={user} onUserUpdate={onUserUpdate} />
     </div>
   );
 }

@@ -7,7 +7,8 @@ CREATE TABLE users (
     first_name TEXT NOT NULL,
     phone_number TEXT,
     mail TEXT NOT NULL,
-    password TEXT NOT NULL
+    password TEXT NOT NULL,
+    avatar TEXT
 );
 
 
