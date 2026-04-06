@@ -1,0 +1,103 @@
+{
+  "app": {
+    "name": "ChatFlow"
+  },
+  "home": {
+    "title": "Stell dir einen",
+    "titleHighlight": "Ort vor...",
+    "description": "Wo Kommunikation keine Grenzen kennt. Treten Sie unserem futuristischen Raum bei, um sich mit Ihrer Community, Freunden oder Kollegen auszutauschen.",
+    "openApp": "App öffnen",
+    "login": "Anmelden",
+    "signup": "Registrieren"
+  },
+  "auth": {
+    "login": "Anmelden",
+    "signup": "Registrieren",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "name": "Nachname",
+    "firstName": "Vorname",
+    "phone": "Telefon",
+    "loginBtn": "Anmelden",
+    "signupBtn": "Registrieren",
+    "backHome": "Zurück zur Startseite",
+    "loginSuccess": "Anmeldung erfolgreich!",
+    "loginError": "Ungültige Anmeldedaten",
+    "serverError": "Serververbindungsfehler!",
+    "signupSuccess": "Registrierung erfolgreich!"
+  },
+  "server": {
+    "members": "Mitglieder",
+    "owner": "Eigentümer",
+    "admins": "Admins",
+    "membersList": "Mitglieder",
+    "online": "Online",
+    "changeRole": "Rolle ändern:",
+    "kick": "Rauswerfen",
+    "ban": "Sperren",
+    "tempBan": "Temporär sperren",
+    "unban": "Entsperren",
+    "selectServer": "Server auswählen",
+    "welcome": "Willkommen bei ChatFlow",
+    "welcomeText": "Wählen, erstellen oder treten Sie einem Server bei, um zu chatten!",
+    "inviteFriends": "Freunde einladen",
+    "inviteCopied": "Einladungscode kopiert!",
+    "editName": "Namen bearbeiten",
+    "deleteServer": "Server löschen",
+    "leaveServer": "Server verlassen",
+    "createChannel": "+ Kanal erstellen",
+    "editChannel": "Namen bearbeiten",
+    "deleteChannel": "Kanal löschen"
+  },
+  "chat": {
+    "selectChannel": "Wählen Sie einen Kanal",
+    "welcomeChannel": "Wählen oder erstellen Sie links einen Kanal, um zu chatten!",
+    "placeholder": "Schreiben in #",
+    "users": "Benutzer",
+    "typing": "schreibt...",
+    "edited": "(bearbeitet)",
+    "editMessage": "Bearbeiten",
+    "deleteMessage": "Löschen",
+    "saveEdit": "Speichern",
+    "cancelEdit": "Abbrechen"
+  },
+  "modal": {
+    "create": "Erstellen",
+    "join": "Beitreten",
+    "cancel": "Abbrechen",
+    "createServer": "Server erstellen",
+    "joinServer": "Server beitreten",
+    "serverName": "Servername",
+    "inviteCode": "Einladungscode",
+    "confirmDelete": "Sind Sie sicher?",
+    "leaveConfirm": "Möchten Sie diesen Server wirklich verlassen?",
+    "leave": "Verlassen",
+    "delete": "Löschen",
+    "banReason": "Sperrgrund (optional)",
+    "banDuration": "Dauer (in Minuten)",
+    "confirmBan": "Sperre bestätigen",
+    "confirmKick": "Rauswurf bestätigen",
+    "bannedUsers": "Gesperrte Benutzer",
+    "permanent": "Permanent",
+    "temporary": "Temporär",
+    "expiresAt": "Läuft ab am"
+  },
+  "dm": {
+    "title": "Direktnachrichten",
+    "newConversation": "Neue Unterhaltung",
+    "placeholder": "Nachricht schreiben...",
+    "noConversations": "Keine Unterhaltungen",
+    "searchUser": "Benutzer suchen..."
+  },
+  "gif": {
+    "search": "GIF suchen...",
+    "powered": "Powered by Tenor"
+  },
+  "reactions": {
+    "addReaction": "Reaktion hinzufügen"
+  },
+  "lang": {
+    "switch": "DE",
+    "current": "DE"
+  }
+}

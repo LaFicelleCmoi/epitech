@@ -1,0 +1,103 @@
+{
+  "app": {
+    "name": "ChatFlow"
+  },
+  "home": {
+    "title": "想像してみて",
+    "titleHighlight": "ください...",
+    "description": "コミュニケーションに限界のない場所。コミュニティ、友人、同僚とつながる未来的な空間に参加しましょう。",
+    "openApp": "アプリを開く",
+    "login": "ログイン",
+    "signup": "登録"
+  },
+  "auth": {
+    "login": "ログイン",
+    "signup": "登録",
+    "email": "メールアドレス",
+    "password": "パスワード",
+    "name": "名前",
+    "firstName": "名",
+    "phone": "電話番号",
+    "loginBtn": "ログイン",
+    "signupBtn": "登録する",
+    "backHome": "ホームに戻る",
+    "loginSuccess": "ログイン成功！",
+    "loginError": "認証情報が無効です",
+    "serverError": "サーバー接続エラー！",
+    "signupSuccess": "登録成功！"
+  },
+  "server": {
+    "members": "メンバー",
+    "owner": "オーナー",
+    "admins": "管理者",
+    "membersList": "メンバー",
+    "online": "オンライン",
+    "changeRole": "役割を変更：",
+    "kick": "追放",
+    "ban": "BAN",
+    "tempBan": "一時BAN",
+    "unban": "BAN解除",
+    "selectServer": "サーバーを選択",
+    "welcome": "ChatFlowへようこそ",
+    "welcomeText": "サーバーを選択、作成、または参加してチャットを始めましょう！",
+    "inviteFriends": "友達を招待",
+    "inviteCopied": "招待コードをコピーしました！",
+    "editName": "名前を編集",
+    "deleteServer": "サーバーを削除",
+    "leaveServer": "サーバーを退出",
+    "createChannel": "+ チャンネルを作成",
+    "editChannel": "名前を編集",
+    "deleteChannel": "チャンネルを削除"
+  },
+  "chat": {
+    "selectChannel": "チャンネルを選択してください",
+    "welcomeChannel": "左側でチャンネルを選択または作成してチャットを始めましょう！",
+    "placeholder": "#に書き込む",
+    "users": "ユーザー",
+    "typing": "入力中...",
+    "edited": "(編集済み)",
+    "editMessage": "編集",
+    "deleteMessage": "削除",
+    "saveEdit": "保存",
+    "cancelEdit": "キャンセル"
+  },
+  "modal": {
+    "create": "作成",
+    "join": "参加",
+    "cancel": "キャンセル",
+    "createServer": "サーバーを作成",
+    "joinServer": "サーバーに参加",
+    "serverName": "サーバー名",
+    "inviteCode": "招待コード",
+    "confirmDelete": "本当によろしいですか？",
+    "leaveConfirm": "このサーバーを退出してもよろしいですか？",
+    "leave": "退出",
+    "delete": "削除",
+    "banReason": "BAN理由（任意）",
+    "banDuration": "期間（分）",
+    "confirmBan": "BANを確認",
+    "confirmKick": "追放を確認",
+    "bannedUsers": "BANされたユーザー",
+    "permanent": "永久",
+    "temporary": "一時的",
+    "expiresAt": "有効期限"
+  },
+  "dm": {
+    "title": "ダイレクトメッセージ",
+    "newConversation": "新しい会話",
+    "placeholder": "メッセージを書く...",
+    "noConversations": "会話がありません",
+    "searchUser": "ユーザーを検索..."
+  },
+  "gif": {
+    "search": "GIFを検索...",
+    "powered": "Powered by Tenor"
+  },
+  "reactions": {
+    "addReaction": "リアクションを追加"
+  },
+  "lang": {
+    "switch": "JA",
+    "current": "JA"
+  }
+}

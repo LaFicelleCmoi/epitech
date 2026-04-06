@@ -1,0 +1,51 @@
+{
+  "name": "chatflow-desktop",
+  "version": "1.0.0",
+  "description": "ChatFlow Desktop Application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "build:win": "electron-builder --win",
+    "build:mac": "electron-builder --mac",
+    "build:linux": "electron-builder --linux",
+    "build:all": "electron-builder --win --mac --linux"
+  },
+  "build": {
+    "appId": "com.chatflow.desktop",
+    "productName": "ChatFlow",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "icon.*"
+    ],
+    "win": {
+      "target": ["nsis"],
+      "icon": "icon.png"
+    },
+    "mac": {
+      "target": ["dmg"],
+      "icon": "icon.png",
+      "category": "public.app-category.social-networking"
+    },
+    "linux": {
+      "target": ["AppImage", "deb"],
+      "icon": "icon.png",
+      "category": "Network"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "dependencies": {
+    "electron-store": "^10.0.1"
+  },
+  "devDependencies": {
+    "electron": "^33.4.0",
+    "electron-builder": "^25.1.8"
+  }
+}

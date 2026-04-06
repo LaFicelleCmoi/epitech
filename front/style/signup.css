@@ -1,0 +1,266 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: #0c0c0c;
+}
+
+@property --a {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  position: relative;
+}
+
+/* Navigation Links */
+.formation-link {
+  position: fixed;
+  padding: 12px 24px;
+  background: #25252b;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 500;
+  z-index: 2000;
+  transition: 0.3s;
+  border: 2px solid #45f3ff;
+}
+
+.formation-link:hover {
+  background: #45f3ff;
+  color: #111;
+  box-shadow: 0 0 20px #45f3ff;
+}
+
+.back-link {
+  top: 20px;
+  left: 20px;
+}
+
+.home-link {
+  bottom: 20px;
+  right: 20px;
+  border-color: #ff2770;
+}
+
+.home-link:hover {
+  background: #ff2770;
+  box-shadow: 0 0 20px #ff2770;
+}
+
+
+.employer-section {
+  position: relative;
+  width: 450px;
+  min-height: 500px;
+  background: repeating-conic-gradient(
+    from var(--a),
+    #ff2770 0%,
+    #ff2770 5%,
+    transparent 5%,
+    transparent 40%,
+    #ff2770 50%
+  );
+  filter: drop-shadow(0 15px 50px #000);
+  border-radius: 20px;
+  animation: rotating 10s linear infinite;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 40px;
+  transition: 0.5s;
+}
+
+@keyframes rotating {
+  0% {
+    --a: 0deg;
+  }
+  100% {
+    --a: 360deg;
+  }
+}
+
+.employer-section::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: repeating-conic-gradient(
+    from var(--a),
+    #45f3ff 0%,
+    #45f3ff 5%,
+    transparent 5%,
+    transparent 40%,
+    #45f3ff 50%
+  );
+  filter: drop-shadow(0 15px 50px #000);
+  border-radius: 20px;
+  animation: rotating 10s linear infinite;
+  animation-delay: -1s;
+}
+
+.employer-section::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  background: #2d2d39;
+  border-radius: 15px;
+  border: 8px solid #25252b;
+  z-index: 1;
+}
+
+/* Form Content */
+.employer-section h1,
+.employer-section .fonction-label,
+.employer-section form {
+  position: relative;
+  z-index: 1000;
+}
+
+.employer-section h1 {
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  margin-bottom: 10px;
+  text-shadow: 0 0 10px #ff2770;
+}
+
+.fonction-label {
+  color: #45f3ff;
+  font-weight: 500;
+  margin-bottom: 20px;
+  display: block;
+  text-shadow: 0 0 5px #45f3ff;
+}
+
+#formAnnonce {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-group label {
+  color: #fff;
+  font-size: 0.9em;
+  font-weight: 400;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px 20px;
+  outline: none;
+  border: none;
+  font-size: 1em;
+  color: #fff;
+  background: #0000001a;
+  border: 2px solid #fff;
+  border-radius: 30px;
+  transition: 0.3s;
+}
+
+.form-group input:focus {
+  border-color: #45f3ff;
+  box-shadow: 0 0 10px #45f3ff33;
+}
+
+.form-group input::placeholder {
+  color: #999;
+}
+
+#formAnnonce button[type="submit"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin-top: 10px;
+  background: #45f3ff;
+  border: none;
+  border-radius: 30px;
+  font-weight: 500;
+  font-size: 1em;
+  color: #111;
+  cursor: pointer;
+  transition: 0.3s;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+#formAnnonce button[type="submit"]:hover:not(:disabled) {
+  box-shadow: 0 0 10px #45f3ff, 0 0 40px #45f3ff;
+  transform: translateY(-2px);
+}
+
+#formAnnonce button[type="submit"]:disabled {
+  background: #999;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .signup-container {
+    padding: 80px 20px;
+  }
+
+  .employer-section {
+    width: 100%;
+    max-width: 400px;
+    min-height: auto;
+    padding: 40px 30px;
+  }
+
+  .formation-link {
+    padding: 10px 20px;
+    font-size: 0.9em;
+  }
+
+  .back-link {
+    top: 10px;
+    left: 10px;
+  }
+
+  .home-link {
+    bottom: 10px;
+    right: 10px;
+  }
+  
+}
+
+@media (max-width: 480px) {
+  .employer-section {
+    padding: 30px 20px;
+  }
+
+  .employer-section h1 {
+    font-size: 1.5em;
+  }
+
+  .form-group input,
+  #formAnnonce button[type="submit"] {
+    padding: 10px 15px;
+    font-size: 0.9em;
+  }
+}

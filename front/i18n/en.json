@@ -1,0 +1,103 @@
+{
+  "app": {
+    "name": "ChatFlow"
+  },
+  "home": {
+    "title": "Imagine a",
+    "titleHighlight": "Place...",
+    "description": "Where communication has no limits. Join our futuristic space to connect with your community, friends, or colleagues.",
+    "openApp": "Open the app",
+    "login": "Login",
+    "signup": "Sign Up"
+  },
+  "auth": {
+    "login": "Login",
+    "signup": "Sign Up",
+    "email": "Email",
+    "password": "Password",
+    "name": "Last Name",
+    "firstName": "First Name",
+    "phone": "Phone",
+    "loginBtn": "Login",
+    "signupBtn": "Sign Up",
+    "backHome": "Back to home",
+    "loginSuccess": "Login successful!",
+    "loginError": "Invalid credentials",
+    "serverError": "Server connection error!",
+    "signupSuccess": "Registration successful!"
+  },
+  "server": {
+    "members": "Members",
+    "owner": "Owner",
+    "admins": "Admins",
+    "membersList": "Members",
+    "online": "Online",
+    "changeRole": "Change role:",
+    "kick": "Kick",
+    "ban": "Ban",
+    "tempBan": "Temporary Ban",
+    "unban": "Unban",
+    "selectServer": "Select a server",
+    "welcome": "Welcome to ChatFlow",
+    "welcomeText": "Select, create, or join a server to start chatting!",
+    "inviteFriends": "Invite friends",
+    "inviteCopied": "Invite code copied!",
+    "editName": "Edit name",
+    "deleteServer": "Delete server",
+    "leaveServer": "Leave server",
+    "createChannel": "+ Create a channel",
+    "editChannel": "Edit name",
+    "deleteChannel": "Delete channel"
+  },
+  "chat": {
+    "selectChannel": "Select a channel",
+    "welcomeChannel": "Select or create a channel on the left to start chatting!",
+    "placeholder": "Write in #",
+    "users": "Users",
+    "typing": "is typing...",
+    "edited": "(edited)",
+    "editMessage": "Edit",
+    "deleteMessage": "Delete",
+    "saveEdit": "Save",
+    "cancelEdit": "Cancel"
+  },
+  "modal": {
+    "create": "Create",
+    "join": "Join",
+    "cancel": "Cancel",
+    "createServer": "Create a server",
+    "joinServer": "Join a server",
+    "serverName": "Server name",
+    "inviteCode": "Invite code",
+    "confirmDelete": "Are you sure?",
+    "leaveConfirm": "Are you sure you want to leave this server?",
+    "leave": "Leave",
+    "delete": "Delete",
+    "banReason": "Ban reason (optional)",
+    "banDuration": "Duration (in minutes)",
+    "confirmBan": "Confirm ban",
+    "confirmKick": "Confirm kick",
+    "bannedUsers": "Banned users",
+    "permanent": "Permanent",
+    "temporary": "Temporary",
+    "expiresAt": "Expires at"
+  },
+  "dm": {
+    "title": "Direct Messages",
+    "newConversation": "New conversation",
+    "placeholder": "Write a message...",
+    "noConversations": "No conversations",
+    "searchUser": "Search for a user..."
+  },
+  "gif": {
+    "search": "Search for a GIF...",
+    "powered": "Powered by Tenor"
+  },
+  "reactions": {
+    "addReaction": "Add a reaction"
+  },
+  "lang": {
+    "switch": "FR",
+    "current": "EN"
+  }
+}

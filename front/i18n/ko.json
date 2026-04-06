@@ -1,0 +1,103 @@
+{
+  "app": {
+    "name": "ChatFlow"
+  },
+  "home": {
+    "title": "상상해보세요",
+    "titleHighlight": "그런 곳을...",
+    "description": "소통에 한계가 없는 곳. 커뮤니티, 친구, 동료와 연결할 수 있는 미래적인 공간에 참여하세요.",
+    "openApp": "앱 열기",
+    "login": "로그인",
+    "signup": "회원가입"
+  },
+  "auth": {
+    "login": "로그인",
+    "signup": "회원가입",
+    "email": "이메일",
+    "password": "비밀번호",
+    "name": "성",
+    "firstName": "이름",
+    "phone": "전화번호",
+    "loginBtn": "로그인",
+    "signupBtn": "회원가입",
+    "backHome": "홈으로 돌아가기",
+    "loginSuccess": "로그인 성공!",
+    "loginError": "잘못된 인증 정보",
+    "serverError": "서버 연결 오류!",
+    "signupSuccess": "회원가입 성공!"
+  },
+  "server": {
+    "members": "멤버",
+    "owner": "소유자",
+    "admins": "관리자",
+    "membersList": "멤버",
+    "online": "온라인",
+    "changeRole": "역할 변경:",
+    "kick": "추방",
+    "ban": "차단",
+    "tempBan": "임시 차단",
+    "unban": "차단 해제",
+    "selectServer": "서버를 선택하세요",
+    "welcome": "ChatFlow에 오신 것을 환영합니다",
+    "welcomeText": "서버를 선택, 생성 또는 참여하여 채팅을 시작하세요!",
+    "inviteFriends": "친구 초대",
+    "inviteCopied": "초대 코드가 복사되었습니다!",
+    "editName": "이름 수정",
+    "deleteServer": "서버 삭제",
+    "leaveServer": "서버 나가기",
+    "createChannel": "+ 채널 만들기",
+    "editChannel": "이름 수정",
+    "deleteChannel": "채널 삭제"
+  },
+  "chat": {
+    "selectChannel": "채널을 선택하세요",
+    "welcomeChannel": "왼쪽에서 채널을 선택하거나 만들어 채팅을 시작하세요!",
+    "placeholder": "#에 입력",
+    "users": "사용자",
+    "typing": "입력 중...",
+    "edited": "(수정됨)",
+    "editMessage": "수정",
+    "deleteMessage": "삭제",
+    "saveEdit": "저장",
+    "cancelEdit": "취소"
+  },
+  "modal": {
+    "create": "만들기",
+    "join": "참여",
+    "cancel": "취소",
+    "createServer": "서버 만들기",
+    "joinServer": "서버 참여",
+    "serverName": "서버 이름",
+    "inviteCode": "초대 코드",
+    "confirmDelete": "정말로 삭제하시겠습니까?",
+    "leaveConfirm": "정말로 이 서버를 나가시겠습니까?",
+    "leave": "나가기",
+    "delete": "삭제",
+    "banReason": "차단 사유 (선택)",
+    "banDuration": "기간 (분)",
+    "confirmBan": "차단 확인",
+    "confirmKick": "추방 확인",
+    "bannedUsers": "차단된 사용자",
+    "permanent": "영구",
+    "temporary": "임시",
+    "expiresAt": "만료일"
+  },
+  "dm": {
+    "title": "다이렉트 메시지",
+    "newConversation": "새 대화",
+    "placeholder": "메시지를 입력하세요...",
+    "noConversations": "대화가 없습니다",
+    "searchUser": "사용자 검색..."
+  },
+  "gif": {
+    "search": "GIF 검색...",
+    "powered": "Powered by Tenor"
+  },
+  "reactions": {
+    "addReaction": "반응 추가"
+  },
+  "lang": {
+    "switch": "KO",
+    "current": "KO"
+  }
+}

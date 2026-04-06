@@ -1,0 +1,103 @@
+{
+  "app": {
+    "name": "ChatFlow"
+  },
+  "home": {
+    "title": "想象一个",
+    "titleHighlight": "地方...",
+    "description": "在这里，沟通没有界限。加入我们的未来空间，与您的社区、朋友或同事交流。",
+    "openApp": "打开应用",
+    "login": "登录",
+    "signup": "注册"
+  },
+  "auth": {
+    "login": "登录",
+    "signup": "注册",
+    "email": "邮箱",
+    "password": "密码",
+    "name": "姓",
+    "firstName": "名",
+    "phone": "电话",
+    "loginBtn": "登录",
+    "signupBtn": "注册",
+    "backHome": "返回首页",
+    "loginSuccess": "登录成功！",
+    "loginError": "凭据无效",
+    "serverError": "服务器连接错误！",
+    "signupSuccess": "注册成功！"
+  },
+  "server": {
+    "members": "成员",
+    "owner": "所有者",
+    "admins": "管理员",
+    "membersList": "成员",
+    "online": "在线",
+    "changeRole": "更改角色：",
+    "kick": "踢出",
+    "ban": "封禁",
+    "tempBan": "临时封禁",
+    "unban": "解封",
+    "selectServer": "选择一个服务器",
+    "welcome": "欢迎来到ChatFlow",
+    "welcomeText": "选择、创建或加入一个服务器开始聊天吧！",
+    "inviteFriends": "邀请朋友",
+    "inviteCopied": "邀请码已复制！",
+    "editName": "编辑名称",
+    "deleteServer": "删除服务器",
+    "leaveServer": "离开服务器",
+    "createChannel": "+ 创建频道",
+    "editChannel": "编辑名称",
+    "deleteChannel": "删除频道"
+  },
+  "chat": {
+    "selectChannel": "请选择一个频道",
+    "welcomeChannel": "在左侧选择或创建一个频道开始聊天！",
+    "placeholder": "在 # 中输入",
+    "users": "用户",
+    "typing": "正在输入...",
+    "edited": "(已编辑)",
+    "editMessage": "编辑",
+    "deleteMessage": "删除",
+    "saveEdit": "保存",
+    "cancelEdit": "取消"
+  },
+  "modal": {
+    "create": "创建",
+    "join": "加入",
+    "cancel": "取消",
+    "createServer": "创建服务器",
+    "joinServer": "加入服务器",
+    "serverName": "服务器名称",
+    "inviteCode": "邀请码",
+    "confirmDelete": "您确定吗？",
+    "leaveConfirm": "您确定要离开此服务器吗？",
+    "leave": "离开",
+    "delete": "删除",
+    "banReason": "封禁原因（可选）",
+    "banDuration": "时长（分钟）",
+    "confirmBan": "确认封禁",
+    "confirmKick": "确认踢出",
+    "bannedUsers": "被封禁的用户",
+    "permanent": "永久",
+    "temporary": "临时",
+    "expiresAt": "到期时间"
+  },
+  "dm": {
+    "title": "私信",
+    "newConversation": "新对话",
+    "placeholder": "写一条消息...",
+    "noConversations": "暂无对话",
+    "searchUser": "搜索用户..."
+  },
+  "gif": {
+    "search": "搜索GIF...",
+    "powered": "Powered by Tenor"
+  },
+  "reactions": {
+    "addReaction": "添加反应"
+  },
+  "lang": {
+    "switch": "ZH",
+    "current": "ZH"
+  }
+}

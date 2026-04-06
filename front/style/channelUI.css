@@ -1,0 +1,160 @@
+.channel-container {
+  width: 240px;
+  height: 100vh;
+  background: #1f1f28;
+  border-right: 2px solid #25252b;
+  display: flex;
+  flex-direction: column;
+  padding-top: 15px;
+  gap: 10px;
+  color: #dcddde;
+  font-family: 'Inter', sans-serif;
+}
+
+.channel-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  font-weight: bold;
+  border-bottom: 1px solid #25252b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #ffffff;
+}
+
+.channel-header > div > button:first-child {
+  background: transparent;
+  border: none;
+  color: #888;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.channel-header > div > button:first-child:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.server-popup,
+.channel-popup {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #2f3136;
+  color: #fff;
+  border: 1px solid #202225;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  padding: 8px;
+  z-index: 100;
+  min-width: 160px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.server-popup button,
+.channel-popup button {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  background: #40444b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  text-align: left;
+  transition: 0.25s;
+}
+
+.server-popup button:hover,
+.channel-popup button:hover {
+  background: #45f3ff;
+  color: #111;
+  box-shadow: 0 0 8px #45f3ff;
+}
+
+.server-popup button:last-child,
+.channel-popup button:last-child {
+  color: #ff2770;
+}
+
+.server-popup button:last-child:hover,
+.channel-popup button:last-child:hover {
+  background: #ff2770;
+  color: #fff;
+  box-shadow: 0 0 8px #ff2770;
+}
+
+.channel-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.channel-item:hover,
+.channel-item.active-popup {
+  background: #45f3ff33;
+  box-shadow: 0 0 10px #45f3ff66;
+  transform: scale(1.02);
+  z-index: 50; 
+}
+
+.channel-options-btn {
+  background: transparent;
+  border: none;
+  color: #888;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  opacity: 0; 
+  pointer-events: none;
+}
+
+.channel-item:hover .channel-options-btn,
+.channel-item.active-popup .channel-options-btn {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.channel-options-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.channel-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #25252b;
+}
+
+.create-channel {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  font-style: italic;
+  color: #45f3ff;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: all 0.25s ease;
+  border: 2px solid transparent;
+}
+
+.create-channel:hover {
+  border-color: #45f3ff;
+  box-shadow: 0 0 10px #45f3ff;
+  transform: scale(1.05);
+}
