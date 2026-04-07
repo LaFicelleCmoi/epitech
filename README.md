@@ -2,7 +2,7 @@
 
 # ChatFlow
 
-**A modern real-time chat application — built for communities, friends, and teams.**
+**Une application de messagerie temps réel moderne — pensée pour les communautés, les amis et les équipes.**
 
 [![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-2088FF?logo=githubactions&logoColor=white)](.github/workflows/ci.yml)
 [![Node.js](https://img.shields.io/badge/Node.js-20-339933?logo=nodedotjs&logoColor=white)](https://nodejs.org)
@@ -16,64 +16,64 @@
 
 ---
 
-## Overview
+## Présentation
 
-**ChatFlow** is a complete real-time communication platform inspired by modern messaging tools. Built as part of the *RTC Strikes Back* project at Epitech, it delivers a polished experience across **web** and **desktop**, with a robust Node.js backend, a hybrid PostgreSQL + MongoDB architecture, and a feature set covering everything from server moderation to private messaging.
+**ChatFlow** est une plateforme complète de communication en temps réel inspirée des outils de messagerie modernes. Développée dans le cadre du projet *RTC Strikes Back* à Epitech, elle propose une expérience soignée à la fois sur le **web** et en **application desktop**, portée par un backend Node.js robuste, une architecture hybride PostgreSQL + MongoDB, et un ensemble de fonctionnalités allant de la modération de serveurs aux messages privés.
 
-The project simulates real startup conditions: tight deadlines, technical decisions to own, and a deliverable that has to *just work*.
-
----
-
-## Features
-
-### Core messaging
-- **Real-time chat** powered by Socket.IO with channels, typing indicators, and online presence
-- **Private messages** (DMs) with one-to-one conversations and unread tracking
-- **Message editing** with edit history indicator
-- **Message replies** with quoted preview
-- **Emoji reactions** on every message
-- **@Mentions** with autocomplete and highlighted notifications
-- **Voice messages** recorded directly in the browser
-- **GIF picker** powered by the Tenor API
-- **Image rendering** inline (auto-detect URLs)
-
-### Server management
-- **Servers & channels** with role-based permissions (owner / admin / member)
-- **Invite codes** for joining servers
-- **Kick** members from a server
-- **Permanent ban** with reason tracking
-- **Temporary ban** with automatic expiration
-- **Server moderation panel** with banned users list
-
-### User experience
-- **Custom avatars** (image upload)
-- **Profile settings** with Discord-style modal
-- **Friend system** with requests, accept/reject, and quick DM
-- **Unread badges** on channels, servers, and DMs
-- **System notifications** (browser + native desktop)
-- **Internationalization** in **8 languages**: 🇫🇷 French, 🇬🇧 English, 🇩🇪 German, 🇯🇵 Japanese, 🇪🇸 Spanish, 🇮🇹 Italian, 🇨🇳 Chinese, 🇰🇷 Korean
-
-### Desktop application
-- **Native Electron app** for **Windows**, **macOS**, and **Linux**
-- **Native menus** with multilingual support
-- **System notifications** for incoming messages
-- **Persistent window state**
-
-### Engineering quality
-- **CI/CD pipeline** on GitHub Actions (build, test, Docker, desktop installer, release on tag)
-- **Swagger API documentation** auto-generated
-- **Docker Compose** for one-command deployment
-- **Modular architecture** (routes / controllers / models / middleware)
+Le projet simule les conditions réelles d'une startup : délais serrés, choix techniques à assumer, et un produit livrable qui doit *fonctionner du premier coup*.
 
 ---
 
-## Tech stack
+## Fonctionnalités
 
-| Layer        | Technologies                                                          |
+### Messagerie principale
+- **Chat temps réel** propulsé par Socket.IO avec channels, indicateurs de frappe et présence en ligne
+- **Messages privés** (DM) avec conversations one-to-one et suivi des messages non lus
+- **Édition des messages** avec indicateur d'historique
+- **Réponses aux messages** avec aperçu du message cité
+- **Réactions emoji** sur chaque message
+- **Mentions @** avec autocomplétion et notifications mises en évidence
+- **Messages vocaux** enregistrés directement depuis le navigateur
+- **Sélecteur de GIF** propulsé par l'API Tenor
+- **Affichage d'images** en ligne (détection automatique des URLs)
+
+### Gestion des serveurs
+- **Serveurs et channels** avec permissions par rôle (owner / admin / member)
+- **Codes d'invitation** pour rejoindre les serveurs
+- **Expulsion (kick)** des membres d'un serveur
+- **Bannissement permanent** avec suivi du motif
+- **Bannissement temporaire** avec expiration automatique
+- **Panneau de modération** avec liste des utilisateurs bannis
+
+### Expérience utilisateur
+- **Avatars personnalisés** (upload d'image)
+- **Paramètres de profil** avec une modale style Discord
+- **Système d'amis** avec demandes, acceptation/refus et accès rapide aux DM
+- **Badges de notifications** sur les channels, serveurs et DM
+- **Notifications système** (navigateur + desktop natif)
+- **Internationalisation** en **8 langues** : 🇫🇷 Français, 🇬🇧 Anglais, 🇩🇪 Allemand, 🇯🇵 Japonais, 🇪🇸 Espagnol, 🇮🇹 Italien, 🇨🇳 Chinois, 🇰🇷 Coréen
+
+### Application desktop
+- **Application Electron native** pour **Windows**, **macOS** et **Linux**
+- **Menus natifs** avec support multilingue
+- **Notifications système** pour les messages entrants
+- **Conservation de l'état de la fenêtre**
+
+### Qualité d'ingénierie
+- **Pipeline CI/CD** sur GitHub Actions (build, tests, Docker, installeur desktop, release sur tag)
+- **Documentation API Swagger** générée automatiquement
+- **Docker Compose** pour un déploiement en une seule commande
+- **Architecture modulaire** (routes / controllers / models / middleware)
+
+---
+
+## Stack technique
+
+| Couche       | Technologies                                                          |
 |--------------|-----------------------------------------------------------------------|
 | **Frontend** | Next.js 14, React 18, Socket.IO Client, Biome                         |
 | **Backend**  | Node.js 20, Express 4, Socket.IO 4, JWT, Bcrypt, Swagger              |
-| **Databases**| PostgreSQL 16 (relational), MongoDB 7 (messages, reactions, replies)  |
+| **Bases de données** | PostgreSQL 16 (relationnel), MongoDB 7 (messages, réactions, replies) |
 | **Desktop**  | Electron 33, electron-builder, electron-store                         |
 | **DevOps**   | Docker, Docker Compose, GitHub Actions, PgAdmin, Mongo Express        |
 | **APIs**     | Tenor (GIF), Web Notifications API, MediaRecorder API                 |
@@ -87,90 +87,90 @@ The project simulates real startup conditions: tight deadlines, technical decisi
 │   Next.js Web   │◄────►│  Express + WS    │◄────►│  PostgreSQL   │
 │   (port 3000)   │      │   (port 3001)    │      │  (users,      │
 └─────────────────┘      │                  │      │   servers,    │
-        ▲                │  • REST API      │      │   bans, etc.) │
+        ▲                │  • API REST      │      │   bans, etc.) │
         │                │  • Socket.IO     │      └───────────────┘
-┌─────────────────┐      │  • JWT Auth      │      ┌───────────────┐
-│  Electron App   │◄────►│  • Swagger Docs  │◄────►│   MongoDB     │
+┌─────────────────┐      │  • Auth JWT      │      ┌───────────────┐
+│  App Electron   │◄────►│  • Docs Swagger  │◄────►│   MongoDB     │
 │ (Win/Mac/Linux) │      └──────────────────┘      │  (messages,   │
-└─────────────────┘                                │  reactions)   │
+└─────────────────┘                                │  réactions)   │
                                                    └───────────────┘
 ```
 
 ---
 
-## Getting started
+## Démarrage rapide
 
-### Prerequisites
-- [Docker](https://www.docker.com/) & Docker Compose
-- (Optional) [Node.js 20+](https://nodejs.org) for desktop builds
+### Prérequis
+- [Docker](https://www.docker.com/) et Docker Compose
+- (Optionnel) [Node.js 20+](https://nodejs.org) pour les builds desktop
 
-### Run with Docker (recommended)
+### Lancer avec Docker (recommandé)
 
 ```bash
 docker compose up --build
 ```
 
-That's it. The full stack is running.
+C'est tout. La stack complète est en marche.
 
-### Available services
+### Services disponibles
 
-| Service              | URL                                 |
-|----------------------|-------------------------------------|
-| Web application      | http://localhost:3000               |
-| Backend API          | http://localhost:3001               |
-| API documentation    | http://localhost:3001/api-docs      |
-| PgAdmin              | http://localhost:5050               |
-| Mongo Express        | http://localhost:8081               |
+| Service                  | URL                                 |
+|--------------------------|-------------------------------------|
+| Application web          | http://localhost:3000               |
+| API backend              | http://localhost:3001               |
+| Documentation API        | http://localhost:3001/api-docs      |
+| PgAdmin                  | http://localhost:5050               |
+| Mongo Express            | http://localhost:8081               |
 
-### Run the desktop app
+### Lancer l'application desktop
 
 ```bash
 cd desktop
 npm install
-npm start                # Run in development
-npm run build:win        # Build .exe installer (Windows)
-npm run build:mac        # Build .dmg (macOS)
-npm run build:linux      # Build .AppImage / .deb (Linux)
+npm start                # Lancer en développement
+npm run build:win        # Construire l'installeur .exe (Windows)
+npm run build:mac        # Construire le .dmg (macOS)
+npm run build:linux      # Construire le .AppImage / .deb (Linux)
 ```
 
 ---
 
-## Project structure
+## Structure du projet
 
 ```
 .
-├── back/               # Express + Socket.IO API
+├── back/               # API Express + Socket.IO
 │   ├── Config/         # DB, Swagger, Mongo
-│   ├── Controllers/    # Request handlers
-│   ├── Models/         # DB queries & schemas
-│   ├── Routes/         # Route definitions
-│   ├── middleware/     # JWT auth, role checks
-│   └── app.js          # Entry point
-├── front/              # Next.js client
-│   ├── components/     # React components (chat, dm, server, layout, modal)
-│   ├── pages/          # Routes (Next.js pages router)
-│   ├── i18n/           # Translations (8 languages)
-│   ├── style/          # CSS modules
-│   └── utils/          # Notifications, message rendering
-├── desktop/            # Electron wrapper
-│   ├── main.js         # Main process (menus, notifications)
-│   └── preload.js      # IPC bridge
-├── DataBase/           # PostgreSQL init scripts
-├── Data-Analyse/       # KPI SQL queries
-├── .github/workflows/  # CI/CD pipeline
-└── docker-compose.yml  # Full stack orchestration
+│   ├── Controllers/    # Gestionnaires de requêtes
+│   ├── Models/         # Requêtes et schémas BDD
+│   ├── Routes/         # Définition des routes
+│   ├── middleware/     # Auth JWT, vérification des rôles
+│   └── app.js          # Point d'entrée
+├── front/              # Client Next.js
+│   ├── components/     # Composants React (chat, dm, server, layout, modal)
+│   ├── pages/          # Routes (Pages Router de Next.js)
+│   ├── i18n/           # Traductions (8 langues)
+│   ├── style/          # Modules CSS
+│   └── utils/          # Notifications, rendu des messages
+├── desktop/            # Wrapper Electron
+│   ├── main.js         # Process principal (menus, notifications)
+│   └── preload.js      # Pont IPC
+├── DataBase/           # Scripts d'initialisation PostgreSQL
+├── Data-Analyse/       # Requêtes SQL pour les KPI
+├── .github/workflows/  # Pipeline CI/CD
+└── docker-compose.yml  # Orchestration de la stack complète
 ```
 
 ---
 
 ## CI/CD
 
-The pipeline runs automatically on:
-- Every **push** on any branch
-- Every **pull request** to `main`
-- Every **tag** (`v*`) — triggers Docker image builds, desktop installers (Win/Mac/Linux) and a GitHub Release
+Le pipeline se déclenche automatiquement sur :
+- Chaque **push** sur n'importe quelle branche
+- Chaque **pull request** vers `main`
+- Chaque **tag** (`v*`) — déclenche les builds des images Docker, les installeurs desktop (Win/Mac/Linux) et une release GitHub
 
-See [`.github/workflows/ci.yml`](.github/workflows/ci.yml) for the full configuration.
+Voir [`.github/workflows/ci.yml`](.github/workflows/ci.yml) pour la configuration complète.
 
 ---
 
@@ -210,5 +210,5 @@ See [`.github/workflows/ci.yml`](.github/workflows/ci.yml) for the full configur
 </table>
 
 <div align="center">
-  <sub>Built with passion at <a href="https://www.epitech.eu/">Epitech</a> — <i>RTC Strikes Back</i> project</sub>
+  <sub>Conçu avec passion à <a href="https://www.epitech.eu/">Epitech</a> — projet <i>RTC Strikes Back</i></sub>
 </div>
