@@ -7,6 +7,7 @@ import MainContent from '../components/layout/MainContent';
 import ServerUsers from '../components/server/ServerUsers';
 import DMList from '../components/dm/DMList';
 import DMChat from '../components/dm/DMChat';
+import FriendsPanel from '../components/dm/FriendsPanel';
 import { sendNotification } from '../utils/notifications';
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
   const [user, setUser] = useState(null);
   const [servers, setServers] = useState([]);
   const [view, setView] = useState('servers');
+  const [dmView, setDmView] = useState('chat'); // 'chat' | 'friends'
   const [activeConversation, setActiveConversation] = useState(null);
   const [unreadDMs, setUnreadDMs] = useState({});
   const [totalUnread, setTotalUnread] = useState(0);
@@ -155,6 +157,7 @@ export default function Home() {
     setActiveConversation(conversation);
     setCurrentServer(null);
     setCurrentChannel(null);
+    setDmView('chat');
 
     if (conversation?._id) {
       setUnreadDMs(prev => {
@@ -215,8 +218,14 @@ export default function Home() {
             unreadDMs={unreadDMs}
             user={user}
             onUserUpdate={setUser}
+            onShowFriends={() => { setDmView('friends'); setActiveConversation(null); }}
+            dmView={dmView}
           />
-          <DMChat conversation={activeConversation} />
+          {dmView === 'friends' ? (
+            <FriendsPanel onStartDM={handleDMSelect} />
+          ) : (
+            <DMChat conversation={activeConversation} />
+          )}
         </div>
       ) : !currentServer ? (
         <div className="main-content-empty">

@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useI18n } from '../../i18n/I18nContext';
 import UserPanel from '../layout/UserPanel';
 
-export default function DMList({ onConversationSelect, activeConversation, unreadDMs = {}, user, onUserUpdate }) {
+export default function DMList({ onConversationSelect, activeConversation, unreadDMs = {}, user, onUserUpdate, onShowFriends, dmView }) {
   const { t } = useI18n();
   const [conversations, setConversations] = useState([]);
   const [showNewDM, setShowNewDM] = useState(false);
@@ -129,6 +129,18 @@ export default function DMList({ onConversationSelect, activeConversation, unrea
         <span>{t('dm.title')}</span>
         <button className="dm-new-btn" onClick={() => setShowNewDM(!showNewDM)}>+</button>
       </div>
+
+      <button
+        className={`dm-friends-btn ${dmView === 'friends' ? 'active' : ''}`}
+        onClick={() => onShowFriends && onShowFriends()}
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+        </svg>
+        Friends
+      </button>
 
       {showNewDM && (
         <div className="dm-search">

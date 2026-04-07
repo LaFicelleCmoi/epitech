@@ -13,9 +13,11 @@ import Channels from './Routes/Channel.js';
 import Message from './Routes/Message.js';
 import Moderation from './Routes/Moderation.js';
 import Conversation from './Routes/Conversation.js';
+import Friend from './Routes/Friend.js';
 import { createMessageService, updateMessageService, addReactionService, removeReactionService } from './Models/MessageModel.js';
 import { getConversationByIdService } from './Models/ConversationModel.js';
 import { ensureBansTable } from './Models/BanModel.js';
+import { ensureFriendsTable } from './Models/FriendModel.js';
 import { getUserByIdService } from './Models/AuthModel.js';
 import setupSwagger from './Config/swagger.js';
 
@@ -33,6 +35,7 @@ app.use('/channels', Channels);
 app.use('/message', Message);
 app.use('/moderation', Moderation);
 app.use('/conversations', Conversation);
+app.use('/friends', Friend);
 
 // Swagger
 setupSwagger(app);
@@ -48,6 +51,10 @@ pool.connect()
     // Ensure bans table exists
     await ensureBansTable();
     console.log('Table bans vérifiée');
+
+    // Ensure friendships table exists
+    await ensureFriendsTable();
+    console.log('Table friendships vérifiée');
 
     // Ensure avatar column exists
     try {

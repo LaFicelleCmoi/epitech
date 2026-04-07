@@ -1088,6 +1088,256 @@
   color: #111;
 }
 
+/* Friends button in DMList */
+.dm-friends-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 4px 8px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: #aaa;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.dm-friends-btn:hover {
+  background: #45f3ff22;
+  color: #45f3ff;
+}
+
+.dm-friends-btn.active {
+  background: #45f3ff22;
+  color: #45f3ff;
+  border-left: 3px solid #45f3ff;
+}
+
+/* Friends Panel */
+.friends-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #1a1a22;
+  color: #dcddde;
+}
+
+.friends-header {
+  height: 60px;
+  background: #1f1f28;
+  border-bottom: 2px solid #25252b;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  font-weight: bold;
+  color: #45f3ff;
+  text-shadow: 0 0 8px #45f3ff33;
+  gap: 10px;
+}
+
+.friends-count {
+  background: #25252b;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  color: #aaa;
+  font-weight: 600;
+}
+
+.friends-tabs {
+  display: flex;
+  gap: 4px;
+  padding: 12px 20px;
+  border-bottom: 1px solid #25252b;
+}
+
+.friends-tab {
+  position: relative;
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  color: #aaa;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.friends-tab:hover {
+  background: #25252b;
+  color: #fff;
+}
+
+.friends-tab.active {
+  background: #45f3ff22;
+  color: #45f3ff;
+}
+
+.friends-tab-add {
+  margin-left: auto;
+  border: 1px solid #45f3ff;
+}
+
+.friends-tab-badge {
+  background: #ff2770;
+  color: #fff;
+  border-radius: 10px;
+  font-size: 10px;
+  padding: 1px 6px;
+  margin-left: 4px;
+  font-weight: 700;
+}
+
+.friends-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 20px;
+}
+
+.friends-empty {
+  text-align: center;
+  color: #666;
+  padding: 40px 20px;
+  font-size: 14px;
+}
+
+.friend-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 4px;
+  transition: 0.2s;
+  border-bottom: 1px solid #25252b;
+}
+
+.friend-row:hover {
+  background: #25252b88;
+}
+
+.friend-avatar {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #45f3ff, #ff2770);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #111;
+  overflow: hidden;
+}
+
+.friend-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.friend-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.friend-name {
+  font-weight: 600;
+  color: #fff;
+  font-size: 14px;
+}
+
+.friend-mail {
+  font-size: 12px;
+  color: #888;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.friend-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.friend-btn {
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: none;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.friend-btn.primary {
+  background: #45f3ff;
+  color: #111;
+}
+
+.friend-btn.primary:hover {
+  box-shadow: 0 0 10px #45f3ff;
+}
+
+.friend-btn.danger {
+  background: #40444b;
+  color: #ff4444;
+}
+
+.friend-btn.danger:hover {
+  background: #ff4444;
+  color: #fff;
+}
+
+/* Add friend form */
+.friends-add-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  background: #25252b;
+  border-radius: 12px;
+  max-width: 400px;
+}
+
+.friends-add-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #888;
+  font-weight: 600;
+  margin: 0;
+}
+
+.friends-add-form input {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background: #111;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+}
+
+.friends-add-form input:focus {
+  border-color: #45f3ff;
+}
+
+.friends-add-message {
+  margin: 0;
+  font-size: 12px;
+  padding: 6px 0;
+}
+
+.friends-add-message.success { color: #3ba55d; }
+.friends-add-message.error { color: #ff4444; }
+
 /* Audio Recorder */
 .audio-record-btn {
   background: transparent;
