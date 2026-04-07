@@ -175,7 +175,40 @@ See [`.github/workflows/ci.yml`](.github/workflows/ci.yml) for the full configur
 ---
 
 ## Auteurs
-[Viemont_Augustin](https://github.com/Augustin734)
-[Perles_Olysse](https://github.com/S6leak)
-[Viscione_Clyde](https://github.com/ClydeViscione)
-[Clerc_Lois](https://github.com/LaFicelleCmoi)
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/Augustin734">
+        <img src="https://github.com/Augustin734.png" width="100" height="100" style="border-radius: 50%;" alt="Augustin Viemont"/>
+        <br />
+        <sub><b>Augustin Viemont</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/S6leak">
+        <img src="https://github.com/S6leak.png" width="100" height="100" style="border-radius: 50%;" alt="Olysse Perles"/>
+        <br />
+        <sub><b>Olysse Perles</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/ClydeViscione">
+        <img src="https://github.com/ClydeViscione.png" width="100" height="100" style="border-radius: 50%;" alt="Clyde Viscione"/>
+        <br />
+        <sub><b>Clyde Viscione</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/LaFicelleCmoi">
+        <img src="https://github.com/LaFicelleCmoi.png" width="100" height="100" style="border-radius: 50%;" alt="Loïs Clerc"/>
+        <br />
+        <sub><b>Loïs Clerc</b></sub>
+      </a>
+    </td>
+  </tr>
+</table>
+
+<div align="center">
+  <sub>Built with passion at <a href="https://www.epitech.eu/">Epitech</a> — <i>RTC Strikes Back</i> project</sub>
+</div>
