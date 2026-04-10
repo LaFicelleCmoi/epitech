@@ -6,3 +6,4 @@ dist/
 *.Zone.Identifier
 package-lock.json
 yarn.lock
+rtc-strikeback-instruction.md
