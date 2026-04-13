@@ -1,14 +1,14 @@
 import express from "express";
-import { 
-  deleteServerById, 
-  createChannelByServerId, 
-  deleteUserFromServer, 
-  createServer, 
-  getAllServer, 
-  getServer, 
-  getServerInviteCode, 
-  joinServerWithInviteCode, 
-  getAllMembersByServer, 
+import {
+  deleteServerById,
+  createChannelByServerId,
+  deleteUserFromServer,
+  createServer,
+  getAllServer,
+  getServer,
+  getServerInviteCode,
+  joinServerWithInviteCode,
+  getAllMembersByServer,
   getAllChannelByServerId,
   getAllUsersByServer,
   updateServer,
@@ -20,88 +20,133 @@ import { checkRole } from "../middleware/CheckRole.js";
 
 const router = express.Router();
 
-
-// GET
 /**
  * @swagger
- * /api/:
+ * /servers:
  *   get:
  *     summary: Récupérer tous les serveurs
- *     tags: [Servers]
- *     responses:
- *       200:
- *         description: Liste des serveurs
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 type: object
- */
-router.get ("/",authenticate, getAllServer);
-
-/**
- * @swagger
- * /api/members:
- *   get:
- *     summary: Récupérer tous les membres d'un serveur
  *     tags: [Servers]
  *     security:
  *       - bearerAuth: []
  *     responses:
  *       200:
- *         description: Liste des membres du serveur
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 type: object
+ *         description: Liste de tous les serveurs
  */
-router.get ("/members", authenticate, getAllMembersByServer);
+router.get("/", authenticate, getAllServer);
 
 /**
  * @swagger
- * /api/{id}:
+ * /servers/members:
+ *   get:
+ *     summary: Récupérer les serveurs dont l'utilisateur est membre
+ *     tags: [Servers]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Liste des serveurs de l'utilisateur
+ */
+router.get("/members", authenticate, getAllMembersByServer);
+
+/**
+ * @swagger
+ * /servers/{id}:
  *   get:
  *     summary: Récupérer un serveur par son ID
  *     tags: [Servers]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
  *         required: true
  *         schema:
  *           type: string
- *         description: ID du serveur
+ *         description: UUID du serveur
  *     responses:
  *       200:
  *         description: Détails du serveur
- *         content:
- *           application/json:
- *             schema:
- *               type: object
+ *       404:
+ *         description: Serveur introuvable
  */
-router.get ("/:id", authenticate, getServer);
-
-router.get("/:serverId/users", authenticate, getAllUsersByServer);
-
-router.get ("/:serverId/channels", authenticate, getAllChannelByServerId);
-
-router.get ("/:serverId/me", authenticate, getMyRoleInServer);
+router.get("/:id", authenticate, getServer);
 
 /**
  * @swagger
- * /api/{id}/inviteCode:
+ * /servers/{serverId}/users:
+ *   get:
+ *     summary: Récupérer tous les utilisateurs d'un serveur
+ *     tags: [Servers]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: serverId
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Liste des utilisateurs avec leur rôle
+ */
+router.get("/:serverId/users", authenticate, getAllUsersByServer);
+
+/**
+ * @swagger
+ * /servers/{serverId}/channels:
+ *   get:
+ *     summary: Récupérer tous les channels d'un serveur
+ *     tags: [Servers]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: serverId
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Liste des channels
+ */
+router.get("/:serverId/channels", authenticate, getAllChannelByServerId);
+
+/**
+ * @swagger
+ * /servers/{serverId}/me:
+ *   get:
+ *     summary: Récupérer mon rôle dans un serveur
+ *     tags: [Servers]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: serverId
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Rôle de l'utilisateur (owner, admin, member)
+ *       404:
+ *         description: Non membre du serveur
+ */
+router.get("/:serverId/me", authenticate, getMyRoleInServer);
+
+/**
+ * @swagger
+ * /servers/{id}/inviteCode:
  *   get:
  *     summary: Récupérer le code d'invitation d'un serveur
  *     tags: [Servers]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
  *         required: true
  *         schema:
  *           type: string
- *         description: ID du serveur
  *     responses:
  *       200:
  *         description: Code d'invitation
@@ -113,19 +158,11 @@ router.get ("/:serverId/me", authenticate, getMyRoleInServer);
  *                 inviteCode:
  *                   type: string
  */
-router.get ("/:id/inviteCode", authenticate, getServerInviteCode);
+router.get("/:id/inviteCode", authenticate, getServerInviteCode);
 
-
-// DELETE
-router.delete ("/:serverId", authenticate, checkRole(["owner"]), deleteServerById);
-
-router.delete ("/:serverId/leave", authenticate, checkRole(["member", "admin"]), deleteUserFromServer);
-
-
-// POST
 /**
  * @swagger
- * /api/:
+ * /servers:
  *   post:
  *     summary: Créer un nouveau serveur
  *     tags: [Servers]
@@ -137,25 +174,20 @@ router.delete ("/:serverId/leave", authenticate, checkRole(["member", "admin"]),
  *         application/json:
  *           schema:
  *             type: object
- *             required:
- *               - name
+ *             required: [name]
  *             properties:
  *               name:
  *                 type: string
- *                 description: Nom du serveur
+ *                 example: Mon Serveur
  *     responses:
  *       201:
  *         description: Serveur créé avec succès
- *         content:
- *           application/json:
- *             schema:
- *               type: object
  */
-router.post ("/", authenticate, createServer);
+router.post("/", authenticate, createServer);
 
 /**
  * @swagger
- * /api/join:
+ * /servers/join:
  *   post:
  *     summary: Rejoindre un serveur avec un code d'invitation
  *     tags: [Servers]
@@ -167,28 +199,165 @@ router.post ("/", authenticate, createServer);
  *         application/json:
  *           schema:
  *             type: object
- *             required:
- *               - inviteCode
+ *             required: [inviteCode]
  *             properties:
  *               inviteCode:
  *                 type: string
- *                 description: Code d'invitation du serveur
+ *                 example: a1b2c3d4e5f6
  *     responses:
  *       200:
  *         description: Serveur rejoint avec succès
- *         content:
- *           application/json:
- *             schema:
- *               type: object
+ *       403:
+ *         description: Utilisateur banni de ce serveur
+ *       404:
+ *         description: Code d'invitation invalide
  */
-router.post ("/join", authenticate, joinServerWithInviteCode);
+router.post("/join", authenticate, joinServerWithInviteCode);
 
-router.post ("/:serverId/channels", authenticate, checkRole(["owner", "admin"]), createChannelByServerId);
+/**
+ * @swagger
+ * /servers/{serverId}/channels:
+ *   post:
+ *     summary: Créer un channel dans un serveur
+ *     tags: [Servers]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: serverId
+ *         required: true
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required: [name]
+ *             properties:
+ *               name:
+ *                 type: string
+ *                 example: général
+ *     responses:
+ *       200:
+ *         description: Channel créé
+ *       403:
+ *         description: Rôle insuffisant (owner ou admin requis)
+ */
+router.post("/:serverId/channels", authenticate, checkRole(["owner", "admin"]), createChannelByServerId);
 
+/**
+ * @swagger
+ * /servers/{serverId}:
+ *   put:
+ *     summary: Modifier le nom d'un serveur
+ *     tags: [Servers]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: serverId
+ *         required: true
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Serveur modifié
+ *       403:
+ *         description: Rôle owner requis
+ */
+router.put("/:serverId", authenticate, checkRole(["owner"]), updateServer);
 
-// PUT
-router.put ("/:serverId", authenticate, checkRole(["owner"]), updateServer);
+/**
+ * @swagger
+ * /servers/{serverId}/members/{userId}:
+ *   put:
+ *     summary: Changer le rôle d'un membre
+ *     tags: [Servers]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: serverId
+ *         required: true
+ *         schema:
+ *           type: string
+ *       - in: path
+ *         name: userId
+ *         required: true
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required: [role]
+ *             properties:
+ *               role:
+ *                 type: string
+ *                 enum: [member, admin]
+ *     responses:
+ *       200:
+ *         description: Rôle mis à jour
+ *       403:
+ *         description: Rôle owner requis
+ */
+router.put("/:serverId/members/:userId", authenticate, checkRole(["owner"]), updateMemberRole);
 
-router.put ("/:serverId/members/:userId", authenticate, checkRole(["owner"]), updateMemberRole);
+/**
+ * @swagger
+ * /servers/{serverId}:
+ *   delete:
+ *     summary: Supprimer un serveur
+ *     tags: [Servers]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: serverId
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Serveur supprimé
+ *       403:
+ *         description: Rôle owner requis
+ */
+router.delete("/:serverId", authenticate, checkRole(["owner"]), deleteServerById);
 
-export default router ;
+/**
+ * @swagger
+ * /servers/{serverId}/leave:
+ *   delete:
+ *     summary: Quitter un serveur
+ *     tags: [Servers]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: serverId
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Serveur quitté
+ *       403:
+ *         description: Le owner ne peut pas quitter son serveur
+ */
+router.delete("/:serverId/leave", authenticate, checkRole(["member", "admin"]), deleteUserFromServer);
+
+export default router;
