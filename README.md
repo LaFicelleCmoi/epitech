@@ -114,13 +114,13 @@ C'est tout. La stack complète est en marche.
 
 ### Services disponibles
 
-| Service                  | URL                                 |
-|--------------------------|-------------------------------------|
-| Application web          | http://localhost:3000               |
-| API backend              | http://localhost:3001               |
-| Documentation API        | http://localhost:3001/api-docs      |
-| PgAdmin                  | http://localhost:5050               |
-| Mongo Express            | http://localhost:8081               |
+| Service                  | URL                                                                                          |
+|--------------------------|----------------------------------------------------------------------------------------------|
+| Application web          | [`http://localhost:3000`](http://localhost:3000)                                              |
+| API backend              | [`http://localhost:3001`](http://localhost:3001)                                              |
+| Documentation API        | [`http://localhost:3001/api-docs`](http://localhost:3001/api-docs)                            |
+| PgAdmin                  | [`http://localhost:5050`](http://localhost:5050)                                              |
+| Mongo Express            | [`http://localhost:8081`](http://localhost:8081)                                              |
 
 ### Lancer l'application desktop
 
