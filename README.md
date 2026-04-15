@@ -210,5 +210,5 @@ Voir [`.github/workflows/ci.yml`](.github/workflows/ci.yml) pour la configuratio
 </table>
 
 <div align="center">
-  <sub>Conçu avec passion à <a href="https://www.epitech.eu/">Epitech</a> — projet <i>RTC Strikes Back</i></sub>
+  <sub>Conçu avec passion à <a href="https://www.epitech.eu/">Epitech</a> — projet <i>RTC Strikes Back</i> — 2025</sub>
 </div>
