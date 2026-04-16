@@ -1,0 +1,18 @@
+{
+  "name": "chatflow",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ChatFlow - run backend + frontend natively without Docker",
+  "scripts": {
+    "install:all": "npm install --prefix back && npm install --prefix front",
+    "db:up": "docker compose -f docker-compose.db.yml up -d",
+    "db:down": "docker compose -f docker-compose.db.yml down",
+    "db:logs": "docker compose -f docker-compose.db.yml logs -f",
+    "back": "npm run start --prefix back",
+    "front": "npm run dev --prefix front",
+    "dev": "concurrently -n back,front -c cyan,magenta \"npm run back\" \"npm run front\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.0"
+  }
+}

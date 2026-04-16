@@ -101,16 +101,58 @@ Le projet simule les conditions réelles d'une startup : délais serrés, choix 
 ## Démarrage rapide
 
 ### Prérequis
-- [Docker](https://www.docker.com/) et Docker Compose
-- (Optionnel) [Node.js 20+](https://nodejs.org) pour les builds desktop
+- [Node.js 20+](https://nodejs.org)
+- [Docker](https://www.docker.com/) (uniquement pour PostgreSQL + MongoDB en mode natif, ou tout en Docker)
 
-### Lancer avec Docker (recommandé)
+### Option 1 — Lancer avec Docker (le plus simple)
 
 ```bash
 docker compose up --build
 ```
 
-C'est tout. La stack complète est en marche.
+La stack complète est en marche.
+
+### Option 2 — Lancer en natif (sans Docker pour l'app)
+
+Docker n'est utilisé que pour les bases de données (PostgreSQL + MongoDB). Le backend Node.js et le frontend Next.js tournent nativement via npm.
+
+**Linux / macOS / WSL :**
+
+```bash
+./start.sh
+```
+
+**Windows (PowerShell) :**
+
+```powershell
+./start.ps1
+```
+
+Ou manuellement :
+
+```bash
+# 1. Installer les dépendances
+npm run install:all
+npm install
+
+# 2. Démarrer les bases de données (Docker)
+npm run db:up
+
+# 3. Lancer backend + frontend en parallèle
+npm run dev
+```
+
+Scripts npm disponibles à la racine :
+
+| Commande             | Action                                           |
+|----------------------|--------------------------------------------------|
+| `npm run dev`        | Backend + frontend en parallèle                  |
+| `npm run back`       | Backend seul                                     |
+| `npm run front`      | Frontend seul                                    |
+| `npm run db:up`      | Démarre PostgreSQL + MongoDB (Docker)            |
+| `npm run db:down`    | Arrête les bases de données                      |
+| `npm run db:logs`    | Logs des bases de données                        |
+| `npm run install:all`| Installe les dépendances back + front            |
 
 ### Services disponibles
 

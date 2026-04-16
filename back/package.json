@@ -4,8 +4,9 @@
     "main": "app.js",
     "type": "module",
     "scripts": {
-        "start": "node app.js",
-        "dev": "node app.js",
+        "start": "node --env-file=../.env.local app.js",
+        "start:docker": "node app.js",
+        "dev": "node --env-file=../.env.local --watch app.js",
         "test": "jest"
     },
     "dependencies": {
