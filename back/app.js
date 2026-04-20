@@ -43,6 +43,13 @@ setupSwagger(app);
 // Error middleware
 app.use(some_error);
 
+// Export the app so it can be imported by tests without starting a server
+export default app;
+
+// Don't start server if in test mode
+if (process.env.NODE_ENV === 'test') {
+  // No-op for tests
+} else {
 // Connexion à PostgreSQL
 pool.connect()
   .then(async () => {
@@ -369,3 +376,5 @@ pool.connect()
 
   })
   .catch(err => console.error('Erreur de connexion à PostgreSQL :', err));
+}
+

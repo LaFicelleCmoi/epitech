@@ -1,8 +1,11 @@
 .env
+.env.local
+.env.*.local
 node_modules/
 .database
 .next/
 dist/
+coverage/
 *.Zone.Identifier
 yarn.lock
 rtc-strikeback-instruction.md
