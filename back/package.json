@@ -4,10 +4,8 @@
     "main": "app.js",
     "type": "module",
     "scripts": {
-        "start": "node --env-file=../.env.local app.js",
+        "dev": "node app.js",
         "start:docker": "node app.js",
-        "dev": "node --env-file=../.env.local --watch app.js",
-        "test": "NODE_ENV=test node --env-file=../.env.local --experimental-vm-modules node_modules/jest/bin/jest.js --forceExit --detectOpenHandles",
         "test:coverage": "NODE_ENV=test node --env-file=../.env.local --experimental-vm-modules node_modules/jest/bin/jest.js --coverage --forceExit --detectOpenHandles",
         "test:watch": "NODE_ENV=test node --env-file=../.env.local --experimental-vm-modules node_modules/jest/bin/jest.js --watch"
     },
